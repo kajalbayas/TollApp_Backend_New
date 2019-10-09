@@ -18,17 +18,24 @@ namespace TollApp_Backend.Models
         public Toll()
         {
             this.PaymentHistories = new HashSet<PaymentHistory>();
+            this.Users = new HashSet<User>();
         }
     
         public int Id { get; set; }
         public int FromLocationId { get; set; }
         public int ToLocationId { get; set; }
         public int VehicleTypeId { get; set; }
+        public Nullable<int> UserId { get; set; }
         public decimal Cost { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PaymentHistory> PaymentHistories { get; set; }
-        public virtual TollPlaza TollPlaza { get; set; }
+        public virtual Route Route { get; set; }
+        public virtual Route Route1 { get; set; }
+        public virtual User User { get; set; }
         public virtual Vehicle Vehicle { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> Users { get; set; }
+        public virtual TollPlaza TollPlaza { get; set; }
     }
 }

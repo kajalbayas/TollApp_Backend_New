@@ -14,8 +14,23 @@ namespace TollApp_Backend.Models
     
     public partial class Route
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Route()
+        {
+            this.Tolls = new HashSet<Toll>();
+            this.TollPlazas = new HashSet<TollPlaza>();
+            this.Users = new HashSet<User>();
+        }
+    
         public int RouteId { get; set; }
         public string From { get; set; }
         public string To { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Toll> Tolls { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TollPlaza> TollPlazas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> Users { get; set; }
     }
 }

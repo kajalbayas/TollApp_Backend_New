@@ -13,10 +13,10 @@ namespace TollApp_Backend.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TOLL_LocalDBEntities : DbContext
+    public partial class TOLL_LocalDBEntities1 : DbContext
     {
-        public TOLL_LocalDBEntities()
-            : base("name=TOLL_LocalDBEntities")
+        public TOLL_LocalDBEntities1()
+            : base("name=TOLL_LocalDBEntities1")
         {
         }
     
