@@ -10,61 +10,127 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using TollApp_Backend.Models;
 
+
 namespace TollApp_Backend.Controllers
 {
     public class UsersController : ApiController
     {
         private TOLL_LocalDBEntities1 db = new TOLL_LocalDBEntities1();
 
+        // GET: api/Users
+        //public IQueryable<User> GetUsers()
+        //{
+        //    return db.Users;
+        //}
 
         // GET: api/Users/5
         [ResponseType(typeof(User))]
-        public IQueryable GetUser(int id)
+        public IQueryable GetUser(int id, int locId, int vehicleId)
         {
-            var VehicleTypeId = 0;
-            var UserRouteId = 0;
-            var TollPlazaId = 0;
-
-          
-            var query = db.Users.Where(x => x.Id == id).Select(x => new {
-                x.Name,
-                UserRouteId = x.RouteId,
-                UserVehicle = x.UserVehicles.Where(y => y.UserId == id).Select(y => new {
-                    y.VehicleNumber,
-                }),
-
-                TollPlazaList = db.TollPlazas.Select(p => new
+            //Request.QueryString["name"].ToString();
+            var getVehicles = db.Users.Where(u => u.Id == id).Select(x => new
+            {
+                x.Id,
+                getVehicle = db.Vehicles.Join(db.UserVehicles, v => v.VehicleTypeId, uv => uv.VehicleTypeId, (v, uv) => new
                 {
-                    TollPlazaId = p.Id,
-                    p.Location
+                   v.VehicleType,
+                   uv.VehicleNumber
                 }),
 
-                PaymentHistory = x.PaymentHistories.Where(z => z.UserId == id).Select(z => new {
-                    z.CreatedDate,
-                    z.TranscationId,
-                    z.Amount
-                }),
+                TollCost = (from t in db.Tolls join tp in db.TollPlazas 
+                            on t.ToLocationId  equals tp.Id join v in db.Vehicles
+                            on t.VehicleTypeId equals v.VehicleTypeId
+                            where t.ToLocationId == locId && t.VehicleTypeId==vehicleId
+                            select new { t.Cost, t.Id })
 
-                Route = db.Routes.Where(y => y.RouteId == x.RouteId).Select(z => new { z.From, z.To }),
-                vehicles = db.Vehicles.Where(q => q.UserId == id).Select(w => new
-                {
-                    w.VehicleType,
-                    VehicleTypeId = w.VehicleTypeId,
-                }),
 
-                Cost = db.Tolls.Where(q => q.ToLocationId == TollPlazaId).Select( c => c.Cost)
-          
+                //TollCost =   db.Tolls.Where(q => (q.ToLocationId == db.TollPlazas.Select(e => e.Id).FirstOrDefault()) &&
+                //             (q.VehicleTypeId == db.Vehicles.Select(v => v.VehicleTypeId).FirstOrDefault()))
+                //             .Select(c => c.Cost)
+
             });
 
+           return getVehicles;
+ }
 
-            return query;
+        // PUT: api/Users/5
+        //[ResponseType(typeof(void))]
+        //public IHttpActionResult PutUser(int id, User user)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
+        //    if (id != user.Id)
+        //    {
+        //        return BadRequest();
+        //    }
+
+        //    db.Entry(user).State = EntityState.Modified;
+
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!UserExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
+
+        //    return StatusCode(HttpStatusCode.NoContent);
+        //}
+
+        // POST: api/Users
+        [ResponseType(typeof(User))]
+        public IHttpActionResult PostUser(User user)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            user.Balance_Amount = 1000;
+            db.Users.Add(user);
+            db.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
         }
+
+        // DELETE: api/Users/5
+        //[ResponseType(typeof(User))]
+        //public IHttpActionResult DeleteUser(int id)
+        //{
+        //    User user = db.Users.Find(id);
+        //    if (user == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    db.Users.Remove(user);
+        //    db.SaveChanges();
+
+        //    return Ok(user);
+        //}
+
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
+
+        //private bool UserExists(int id)
+        //{
+        //    return db.Users.Count(e => e.Id == id) > 0;
+        //}
     }
 }
-
-
-
-
-
-

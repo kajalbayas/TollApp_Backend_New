@@ -12,40 +12,52 @@ using TollApp_Backend.Models;
 
 namespace TollApp_Backend.Controllers
 {
-    public class TollPlazasController : ApiController
+    public class RoutesController : ApiController
     {
         private TOLL_LocalDBEntities1 db = new TOLL_LocalDBEntities1();
 
-        // GET: api/TollPlazas
-        public IQueryable<TollPlaza> GetTollPlazas()
+        // GET: api/Routes
+        //public IQueryable<Route> GetRoutes()
+        //{
+        //    return db.Routes;
+        //}
+
+        // GET: api/Routes/5
+        //[ResponseType(typeof(Route))]
+        public IQueryable GetRoute(int id)
         {
-            return db.TollPlazas;
+            var Routes = db.Routes.Where(r => r.RouteId == id).Select(c => new
+            {
+                 c.From,
+                 c.To
+            });
+
+            return Routes;
+
+            //Route route = db.Routes.Find(id);
+            //if (route == null)
+            //{
+            //    return NotFound();
+            //}
+
+            //return Ok(route);
         }
 
-        // GET: api/TollPlazas/5
-        // [ResponseType(typeof(TollPlaza))]
-        public IQueryable GetTollPlaza(int id)
-        {
-            var ExitLocation = db.TollPlazas.Where(e => e.RouteId == id).Select(l=> l.Location);
-            return ExitLocation;
-   
-        }
-
-        // PUT: api/TollPlazas/5
+        // PUT: api/Routes/5
         //[ResponseType(typeof(void))]
-        //public IHttpActionResult PutTollPlaza(int id, TollPlaza tollPlaza)
+        //public IHttpActionResult PutRoute(int id, Route route)
         //{
         //    if (!ModelState.IsValid)
         //    {
         //        return BadRequest(ModelState);
         //    }
 
-        //    if (id != tollPlaza.Id)
+        //    if (id != route.RouteId)
         //    {
         //        return BadRequest();
         //    }
 
-        //    db.Entry(tollPlaza).State = EntityState.Modified;
+        //    db.Entry(route).State = EntityState.Modified;
 
         //    try
         //    {
@@ -53,7 +65,7 @@ namespace TollApp_Backend.Controllers
         //    }
         //    catch (DbUpdateConcurrencyException)
         //    {
-        //        if (!TollPlazaExists(id))
+        //        if (!RouteExists(id))
         //        {
         //            return NotFound();
         //        }
@@ -66,35 +78,35 @@ namespace TollApp_Backend.Controllers
         //    return StatusCode(HttpStatusCode.NoContent);
         //}
 
-        //// POST: api/TollPlazas
-        //[ResponseType(typeof(TollPlaza))]
-        //public IHttpActionResult PostTollPlaza(TollPlaza tollPlaza)
+        //// POST: api/Routes
+        //[ResponseType(typeof(Route))]
+        //public IHttpActionResult PostRoute(Route route)
         //{
         //    if (!ModelState.IsValid)
         //    {
         //        return BadRequest(ModelState);
         //    }
 
-        //    db.TollPlazas.Add(tollPlaza);
+        //    db.Routes.Add(route);
         //    db.SaveChanges();
 
-        //    return CreatedAtRoute("DefaultApi", new { id = tollPlaza.Id }, tollPlaza);
+        //    return CreatedAtRoute("DefaultApi", new { id = route.RouteId }, route);
         //}
 
-        //// DELETE: api/TollPlazas/5
-        //[ResponseType(typeof(TollPlaza))]
-        //public IHttpActionResult DeleteTollPlaza(int id)
+        //// DELETE: api/Routes/5
+        //[ResponseType(typeof(Route))]
+        //public IHttpActionResult DeleteRoute(int id)
         //{
-        //    TollPlaza tollPlaza = db.TollPlazas.Find(id);
-        //    if (tollPlaza == null)
+        //    Route route = db.Routes.Find(id);
+        //    if (route == null)
         //    {
         //        return NotFound();
         //    }
 
-        //    db.TollPlazas.Remove(tollPlaza);
+        //    db.Routes.Remove(route);
         //    db.SaveChanges();
 
-        //    return Ok(tollPlaza);
+        //    return Ok(route);
         //}
 
         //protected override void Dispose(bool disposing)
@@ -106,9 +118,9 @@ namespace TollApp_Backend.Controllers
         //    base.Dispose(disposing);
         //}
 
-        //private bool TollPlazaExists(int id)
+        //private bool RouteExists(int id)
         //{
-        //    return db.TollPlazas.Count(e => e.Id == id) > 0;
+        //    return db.Routes.Count(e => e.RouteId == id) > 0;
         //}
     }
 }

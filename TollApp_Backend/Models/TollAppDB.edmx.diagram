@@ -5,26 +5,25 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="895f0601609542e08e28b47f65a77821" Name="Diagram1" ZoomLevel="74">
-        <EntityTypeShape EntityType="TOLL_LocalDBModel.PaymentHistory" Width="1.5" PointX="7.5" PointY="5.625" />
-        <EntityTypeShape EntityType="TOLL_LocalDBModel.Route" Width="1.5" PointX="0.75" PointY="5.625" />
-        <EntityTypeShape EntityType="TOLL_LocalDBModel.Toll" Width="1.5" PointX="3" PointY="5.125" />
+        <EntityTypeShape EntityType="TOLL_LocalDBModel.PaymentHistory" Width="1.5" PointX="9.75" PointY="7.25" />
+        <EntityTypeShape EntityType="TOLL_LocalDBModel.Route" Width="1.5" PointX="0.75" PointY="5.875" />
+        <EntityTypeShape EntityType="TOLL_LocalDBModel.Toll" Width="1.5" PointX="5.25" PointY="7.25" />
         <EntityTypeShape EntityType="TOLL_LocalDBModel.TollPlaza" Width="1.5" PointX="3" PointY="10" />
-        <EntityTypeShape EntityType="TOLL_LocalDBModel.User" Width="1.5" PointX="5.25" PointY="5.125" />
-        <EntityTypeShape EntityType="TOLL_LocalDBModel.UserVehicle" Width="1.5" PointX="9.75" PointY="7.375" />
-        <EntityTypeShape EntityType="TOLL_LocalDBModel.Vehicle" Width="1.5" PointX="7.5" PointY="9.625" />
+        <EntityTypeShape EntityType="TOLL_LocalDBModel.User" Width="1.5" PointX="7.5" PointY="6.625" />
+        <EntityTypeShape EntityType="TOLL_LocalDBModel.UserVehicle" Width="1.5" PointX="12" PointY="8.875" />
+        <EntityTypeShape EntityType="TOLL_LocalDBModel.Vehicle" Width="1.5" PointX="9.75" PointY="11.125" />
         <AssociationConnector Association="TOLL_LocalDBModel.FK_PAYMENTHISTORY_TOLLID" />
         <AssociationConnector Association="TOLL_LocalDBModel.FK_PAYMENTHISTORY_USERID" />
         <AssociationConnector Association="TOLL_LocalDBModel.FK_Toll_FROMLOCID" />
-        <AssociationConnector Association="TOLL_LocalDBModel.FK_Toll_TOLOCID" />
         <AssociationConnector Association="TOLL_LocalDBModel.FK_TollPlaza_RouteId" />
         <AssociationConnector Association="TOLL_LocalDBModel.FK_User_Route_Id" />
+        <AssociationConnector Association="TOLL_LocalDBModel.FK_Toll_TOLOCID" />
         <AssociationConnector Association="TOLL_LocalDBModel.FK_Toll_User_Id" />
         <AssociationConnector Association="TOLL_LocalDBModel.FK_Toll_VEHICLE_TYPE_ID" />
         <AssociationConnector Association="TOLL_LocalDBModel.FK_User_Toll_Id" />
         <AssociationConnector Association="TOLL_LocalDBModel.FK_UserVehicle_UserId" />
         <AssociationConnector Association="TOLL_LocalDBModel.PK_Vehicles_UserId" />
         <AssociationConnector Association="TOLL_LocalDBModel.FK_UserVehicle_VehicleTypeId" />
-        <AssociationConnector Association="TOLL_LocalDBModel.FK_Toll_TOLOCID1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
