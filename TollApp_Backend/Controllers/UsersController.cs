@@ -17,17 +17,11 @@ namespace TollApp_Backend.Controllers
     {
         private TOLL_LocalDBEntities1 db = new TOLL_LocalDBEntities1();
 
-        // GET: api/Users
-        //public IQueryable<User> GetUsers()
-        //{
-        //    return db.Users;
-        //}
-
         // GET: api/Users/5
         [ResponseType(typeof(User))]
         public IQueryable GetUser(int id, int locId, int vehicleId)
         {
-            //Request.QueryString["name"].ToString();
+           
             var getVehicles = db.Users.Where(u => u.Id == id).Select(x => new
             {
                 x.Id,
@@ -43,15 +37,25 @@ namespace TollApp_Backend.Controllers
                             where t.ToLocationId == locId && t.VehicleTypeId==vehicleId
                             select new { t.Cost, t.Id })
 
-
-                //TollCost =   db.Tolls.Where(q => (q.ToLocationId == db.TollPlazas.Select(e => e.Id).FirstOrDefault()) &&
-                //             (q.VehicleTypeId == db.Vehicles.Select(v => v.VehicleTypeId).FirstOrDefault()))
-                //             .Select(c => c.Cost)
-
             });
+             return getVehicles;
+       }
 
-           return getVehicles;
- }
+
+        // POST: api/Users
+        [ResponseType(typeof(User))]
+        public IHttpActionResult PostUser(User user)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            user.Balance_Amount = 1000;
+            db.Users.Add(user);
+            db.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
+        }
 
         // PUT: api/Users/5
         //[ResponseType(typeof(void))]
@@ -88,20 +92,7 @@ namespace TollApp_Backend.Controllers
         //    return StatusCode(HttpStatusCode.NoContent);
         //}
 
-        // POST: api/Users
-        [ResponseType(typeof(User))]
-        public IHttpActionResult PostUser(User user)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            user.Balance_Amount = 1000;
-            db.Users.Add(user);
-            db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
-        }
 
         // DELETE: api/Users/5
         //[ResponseType(typeof(User))]
