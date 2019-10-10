@@ -11,6 +11,8 @@ using System.Web.Http.Description;
 using TollApp_Backend.Models;
 
 
+
+
 namespace TollApp_Backend.Controllers
 {
     public class UsersController : ApiController
@@ -21,7 +23,6 @@ namespace TollApp_Backend.Controllers
         [ResponseType(typeof(User))]
         public IQueryable GetUser(int id, int locId, int vehicleId)
         {
-           
             var getVehicles = db.Users.Where(u => u.Id == id).Select(x => new
             {
                 x.Id,
@@ -37,8 +38,8 @@ namespace TollApp_Backend.Controllers
                             where t.ToLocationId == locId && t.VehicleTypeId==vehicleId
                             select new { t.Cost, t.Id })
 
-            });
-             return getVehicles;
+                         });
+                return getVehicles;
        }
 
 
@@ -57,71 +58,5 @@ namespace TollApp_Backend.Controllers
             return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
         }
 
-        // PUT: api/Users/5
-        //[ResponseType(typeof(void))]
-        //public IHttpActionResult PutUser(int id, User user)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    if (id != user.Id)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    db.Entry(user).State = EntityState.Modified;
-
-        //    try
-        //    {
-        //        db.SaveChanges();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!UserExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return StatusCode(HttpStatusCode.NoContent);
-        //}
-
-
-
-        // DELETE: api/Users/5
-        //[ResponseType(typeof(User))]
-        //public IHttpActionResult DeleteUser(int id)
-        //{
-        //    User user = db.Users.Find(id);
-        //    if (user == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    db.Users.Remove(user);
-        //    db.SaveChanges();
-
-        //    return Ok(user);
-        //}
-
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
-
-        //private bool UserExists(int id)
-        //{
-        //    return db.Users.Count(e => e.Id == id) > 0;
-        //}
     }
 }

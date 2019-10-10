@@ -17,9 +17,11 @@ namespace TollApp_Backend.Controllers
         private TOLL_LocalDBEntities1 db = new TOLL_LocalDBEntities1();
 
         // GET: api/TollPlazas
-        public IQueryable<TollPlaza> GetTollPlazas()
+        public IQueryable  GetTollPlazas()
         {
-            return db.TollPlazas;
+            //return db.TollPlazas;
+            var TollPlazaList = db.TollPlazas.Select(t => t.Location);
+            return TollPlazaList;
         }
 
         // GET: api/TollPlazas/5
