@@ -166,7 +166,6 @@
     <Compile Include="Controllers\PaymentHistoriesController.cs" />
     <Compile Include="Controllers\RoutesController.cs" />
     <Compile Include="Controllers\TollPlazasController.cs" />
-    <Compile Include="Controllers\TollsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
