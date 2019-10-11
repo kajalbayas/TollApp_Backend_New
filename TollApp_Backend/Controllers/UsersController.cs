@@ -11,8 +11,6 @@ using System.Web.Http.Description;
 using TollApp_Backend.Models;
 
 
-
-
 namespace TollApp_Backend.Controllers
 {
     public class UsersController : ApiController
@@ -40,7 +38,7 @@ namespace TollApp_Backend.Controllers
 
                          });
                 return getVehicles;
-       }
+           }
 
 
         // POST: api/Users

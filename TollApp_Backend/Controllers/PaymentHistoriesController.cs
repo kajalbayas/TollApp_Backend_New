@@ -25,59 +25,44 @@ namespace TollApp_Backend.Controllers
             List<Route> routes = db.Routes.ToList();
             List<Toll> toll = db.Tolls.ToList();
 
-            var FromLocationId = 0;
-            var ToLocationId = 0;
-            var RouteId = 0;
-
-            var query = db.PaymentHistories.Where(u => u.UserId == id).Select(p => new
+           var query = db.PaymentHistories.Where(u => u.UserId == id).Select(ph => new
             {
-                p.TranscationId,
-                p.CreatedDate,
-                p.Amount,
-                //TollDetails = db.Tolls.Where(t => t.Id == p.TollId).Select(x => new
-                //{
+                ph.TranscationId,
+                ph.CreatedDate,
+                ph.Amount,
+                ExitLocation = (from p in db.PaymentHistories
+                                join t in db.Tolls on p.TollId equals t.Id
+                                join tp in db.TollPlazas on t.ToLocationId equals tp.Id
+                                where p.UserId == id
+                                select new {
+                                             tp.Location,
+                                             t.Cost
+                                }),
 
-                //Location = db.Routes.Join(db.Tolls, r => r.RouteId, t => t.FromLocationId, (r, t) => new
-                //{
-                //    r.From,
-                //    r.To
-                //}),
+              
+                Routes     =    (from p in db.PaymentHistories join t in db.Tolls on p.TollId equals t.Id
+                                join r  in db.Routes on t.FromLocationId equals r.RouteId
+                                where p.UserId == id
+                                select new {
+                                            r.From ,
+                                            r.To
+                                }),
 
-                //VehicleNumber = db.Vehicles.Join(db.Tolls, v => v.VehicleTypeId, u => u.VehicleTypeId, (v, u) => new
-                //{
-                //    u.VehicleTypeId
-                //}).Join(db.UserVehicles, u => u.VehicleTypeId, uv => uv.VehicleTypeId, (u, uv) => new
-                //{
-                //    uv.VehicleNumber
-                //}),
-
-
-                //ExitLocation = db.Tolls.Join(db.TollPlazas, t => t.ToLocationId, tp => tp.Id, (t, tp) => new
-                //{
-                //    tp.Location
-
-                //})
-                //ph.TollId == t.Id &&     t.FromLocationId == tp.RouteId  && 
-
-
-       
-
-
-                ExitLocation = (from tp in db.TollPlazas
-                                join t in db.Tolls on tp.Id equals t.ToLocationId
-                                join ph in db.PaymentHistories on t.Id equals ph.TollId
-                                where  ph.UserId == id && ph.TollId == t.Id && t.FromLocationId == tp.RouteId && t.ToLocationId == tp.Id
-                                select new
-                                {
-                                    tp.Location
+               VehicleNumber = (from p in db.PaymentHistories join  t in db.Tolls on p.TollId equals t.Id 
+                                join v in db.Vehicles on t.VehicleTypeId equals v.VehicleTypeId 
+                                join uv in db.UserVehicles on v.VehicleTypeId equals uv.VehicleTypeId
+                                where p.UserId == id
+                                select new {
+                                            uv.VehicleNumber
                                 })
 
-                //}),
-            });
-             return query;
+                              });
+
+                        return query;
+
         }
 
-
+     
         // POST: api/PaymentHistories
         //[ResponseType(typeof(PaymentHistory))]
         public IHttpActionResult PostPaymentHistory(PaymentHistory paymentHistory)
@@ -91,9 +76,14 @@ namespace TollApp_Backend.Controllers
             DateTime now = DateTime.Now;
             paymentHistory.CreatedDate = now;
             db.PaymentHistories.Add(paymentHistory);
+           
+            
+            // can use Attach
+            var userdetails = db.Users.Where(u => u.Id == paymentHistory.UserId).FirstOrDefault();
+            userdetails.Balance_Amount = userdetails.Balance_Amount - paymentHistory.Amount;
+            db.Entry(userdetails).State = EntityState.Modified;
             db.SaveChanges();
-
-
+  
             return CreatedAtRoute("DefaultApi", new { id = paymentHistory.Id }, paymentHistory);
          }
        }
