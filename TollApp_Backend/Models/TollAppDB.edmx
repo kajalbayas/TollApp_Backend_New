@@ -69,6 +69,7 @@
           </Key>
           <Property Name="VehicleTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="VehicleType" Type="nvarchar" MaxLength="50" />
+          <Property Name="VehicleImg" Type="nvarchar" MaxLength="10" />
           <Property Name="UserId" Type="int" />
         </EntityType>
         <Association Name="FK_PAYMENTHISTORY_TOLLID">
@@ -422,6 +423,7 @@
           <NavigationProperty Name="Tolls" Relationship="TOLL_LocalDBModel.FK_Toll_VEHICLE_TYPE_ID" FromRole="Vehicle" ToRole="Toll" />
           <NavigationProperty Name="User" Relationship="TOLL_LocalDBModel.PK_Vehicles_UserId" FromRole="Vehicle" ToRole="User" />
           <NavigationProperty Name="UserVehicles" Relationship="TOLL_LocalDBModel.FK_UserVehicle_VehicleTypeId" FromRole="Vehicle" ToRole="UserVehicle" />
+          <Property Name="VehicleImg" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_PAYMENTHISTORY_TOLLID">
           <End Type="TOLL_LocalDBModel.Toll" Role="Toll" Multiplicity="1" />
@@ -640,6 +642,7 @@
           <EntitySetMapping Name="Vehicles">
             <EntityTypeMapping TypeName="TOLL_LocalDBModel.Vehicle">
               <MappingFragment StoreEntitySet="Vehicles">
+                <ScalarProperty Name="VehicleImg" ColumnName="VehicleImg" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="VehicleType" ColumnName="VehicleType" />
                 <ScalarProperty Name="VehicleTypeId" ColumnName="VehicleTypeId" />

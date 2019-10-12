@@ -24,6 +24,7 @@ namespace TollApp_Backend.Models
         public int VehicleTypeId { get; set; }
         public string VehicleType { get; set; }
         public Nullable<int> UserId { get; set; }
+        public string VehicleImg { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Toll> Tolls { get; set; }
