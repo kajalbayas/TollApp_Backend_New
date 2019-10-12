@@ -20,14 +20,21 @@ namespace TollApp_Backend.Controllers
         public IQueryable  GetTollPlazas()
         {
             //return db.TollPlazas;
-            var TollPlazaList = db.TollPlazas.Select(t => t.Location);
+            var TollPlazaList = db.TollPlazas.Select(t => new
+            {
+                t.RouteId,
+                t.Location
+            });
             return TollPlazaList;
         }
 
         // GET: api/TollPlazas/5
-      public IQueryable GetTollPlaza(int id)
+        public IQueryable GetTollPlaza(int id)
         {
-            var ExitLocation = db.TollPlazas.Where(e => e.RouteId == id).Select(l=> l.Location);
+            var ExitLocation = db.TollPlazas.Where(e => e.RouteId == id).Select(l => new {
+                l.Location,
+                l.RouteId
+            });
             return ExitLocation;
    
         }
