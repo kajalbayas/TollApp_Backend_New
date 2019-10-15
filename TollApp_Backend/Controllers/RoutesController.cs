@@ -14,7 +14,7 @@ namespace TollApp_Backend.Controllers
 {
     public class RoutesController : ApiController
     {
-        private TOLL_LocalDBEntities1 db = new TOLL_LocalDBEntities1();
+        private TOLL_LocalDBEntities2 db = new TOLL_LocalDBEntities2();
 
         // GET: api/Routes/5
         //[ResponseType(typeof(Route))]

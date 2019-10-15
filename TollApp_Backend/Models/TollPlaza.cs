@@ -17,15 +17,21 @@ namespace TollApp_Backend.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TollPlaza()
         {
+            this.PaymentHistories = new HashSet<PaymentHistory>();
             this.Tolls = new HashSet<Toll>();
+            this.Tolls1 = new HashSet<Toll>();
         }
     
         public int Id { get; set; }
         public string Location { get; set; }
         public Nullable<int> RouteId { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PaymentHistory> PaymentHistories { get; set; }
         public virtual Route Route { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Toll> Tolls { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Toll> Tolls1 { get; set; }
     }
 }

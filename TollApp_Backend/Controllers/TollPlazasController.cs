@@ -14,7 +14,7 @@ namespace TollApp_Backend.Controllers
 {
     public class TollPlazasController : ApiController
     {
-        private TOLL_LocalDBEntities1 db = new TOLL_LocalDBEntities1();
+        private TOLL_LocalDBEntities2 db = new TOLL_LocalDBEntities2();
 
         // GET: api/TollPlazas
         public IQueryable  GetTollPlazas()
@@ -22,6 +22,7 @@ namespace TollApp_Backend.Controllers
             //return db.TollPlazas;
             var TollPlazaList = db.TollPlazas.Select(t => new
             {
+                t.Id,
                 t.RouteId,
                 t.Location
             });

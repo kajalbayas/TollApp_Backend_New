@@ -14,7 +14,7 @@ namespace TollApp_Backend.Controllers
 {
     public class VehiclesController : ApiController
     {
-        private TOLL_LocalDBEntities1 db = new TOLL_LocalDBEntities1();
+        private TOLL_LocalDBEntities2 db = new TOLL_LocalDBEntities2();
 
         // GET: api/Vehicles
         public IQueryable GetVehicles()

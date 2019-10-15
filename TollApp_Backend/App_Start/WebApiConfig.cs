@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Http.Cors;
 using System.Web.Http;
 
 namespace TollApp_Backend
@@ -17,8 +18,9 @@ namespace TollApp_Backend
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+                defaults: new { id = RouteParameter.Optional });
+               EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "*");
+               config.EnableCors(cors);
         }
     }
 }

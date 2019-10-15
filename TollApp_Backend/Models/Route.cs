@@ -17,7 +17,8 @@ namespace TollApp_Backend.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Route()
         {
-            this.Tolls = new HashSet<Toll>();
+            this.ExitLocations = new HashSet<ExitLocation>();
+            this.PaymentHistories = new HashSet<PaymentHistory>();
             this.TollPlazas = new HashSet<TollPlaza>();
             this.Users = new HashSet<User>();
         }
@@ -27,7 +28,9 @@ namespace TollApp_Backend.Models
         public string To { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Toll> Tolls { get; set; }
+        public virtual ICollection<ExitLocation> ExitLocations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PaymentHistory> PaymentHistories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TollPlaza> TollPlazas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

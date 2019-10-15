@@ -13,10 +13,10 @@ namespace TollApp_Backend.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TOLL_LocalDBEntities1 : DbContext
+    public partial class TOLL_LocalDBEntities2 : DbContext
     {
-        public TOLL_LocalDBEntities1()
-            : base("name=TOLL_LocalDBEntities1")
+        public TOLL_LocalDBEntities2()
+            : base("name=TOLL_LocalDBEntities2")
         {
         }
     
@@ -25,6 +25,7 @@ namespace TollApp_Backend.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<ExitLocation> ExitLocations { get; set; }
         public virtual DbSet<PaymentHistory> PaymentHistories { get; set; }
         public virtual DbSet<Route> Routes { get; set; }
         public virtual DbSet<Toll> Tolls { get; set; }

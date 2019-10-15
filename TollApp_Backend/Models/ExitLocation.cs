@@ -12,21 +12,12 @@ namespace TollApp_Backend.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class PaymentHistory
+    public partial class ExitLocation
     {
-        public int Id { get; set; }
-        public Nullable<int> UserId { get; set; }
-        public Nullable<int> ExitLocId { get; set; }
-        public Nullable<int> VehicleTypeId { get; set; }
+        public int ExitLocationId { get; set; }
+        public string ExitLocations { get; set; }
         public Nullable<int> RouteId { get; set; }
-        public Nullable<System.DateTime> CreatedDate { get; set; }
-        public string TranscationId { get; set; }
-        public Nullable<decimal> Amount { get; set; }
-        public string VehicleNumber { get; set; }
     
-        public virtual TollPlaza TollPlaza { get; set; }
         public virtual Route Route { get; set; }
-        public virtual User User { get; set; }
-        public virtual Vehicle Vehicle { get; set; }
     }
 }
