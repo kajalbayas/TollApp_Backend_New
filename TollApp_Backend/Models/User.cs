@@ -18,9 +18,7 @@ namespace TollApp_Backend.Models
         public User()
         {
             this.PaymentHistories = new HashSet<PaymentHistory>();
-            this.Tolls = new HashSet<Toll>();
             this.UserVehicles = new HashSet<UserVehicle>();
-            this.Vehicles = new HashSet<Vehicle>();
         }
     
         public int Id { get; set; }
@@ -33,12 +31,8 @@ namespace TollApp_Backend.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PaymentHistory> PaymentHistories { get; set; }
         public virtual Route Route { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Toll> Tolls { get; set; }
         public virtual Toll Toll { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserVehicle> UserVehicles { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Vehicle> Vehicles { get; set; }
     }
 }

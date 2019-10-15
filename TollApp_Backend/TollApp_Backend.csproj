@@ -178,9 +178,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ExitLocation.cs">
-      <DependentUpon>TollAppDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\PaymentHistory.cs">
       <DependentUpon>TollAppDB.tt</DependentUpon>
     </Compile>

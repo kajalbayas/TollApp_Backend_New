@@ -18,11 +18,11 @@ namespace TollApp_Backend.Models
         public Nullable<int> UserId { get; set; }
         public Nullable<int> ExitLocId { get; set; }
         public Nullable<int> VehicleTypeId { get; set; }
+        public string VehicleNumber { get; set; }
         public Nullable<int> RouteId { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string TranscationId { get; set; }
         public Nullable<decimal> Amount { get; set; }
-        public string VehicleNumber { get; set; }
     
         public virtual TollPlaza TollPlaza { get; set; }
         public virtual Route Route { get; set; }

@@ -25,7 +25,6 @@ namespace TollApp_Backend.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<ExitLocation> ExitLocations { get; set; }
         public virtual DbSet<PaymentHistory> PaymentHistories { get; set; }
         public virtual DbSet<Route> Routes { get; set; }
         public virtual DbSet<Toll> Tolls { get; set; }

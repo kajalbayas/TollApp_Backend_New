@@ -24,12 +24,10 @@ namespace TollApp_Backend.Models
         public int FromLocationId { get; set; }
         public int ToLocationId { get; set; }
         public int VehicleTypeId { get; set; }
-        public Nullable<int> UserId { get; set; }
         public decimal Cost { get; set; }
     
         public virtual TollPlaza TollPlaza { get; set; }
         public virtual TollPlaza TollPlaza1 { get; set; }
-        public virtual User User { get; set; }
         public virtual Vehicle Vehicle { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User> Users { get; set; }
