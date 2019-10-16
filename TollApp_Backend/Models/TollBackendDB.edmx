@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TOLL_LocalDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="TollAppDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="PaymentHistory">
           <Key>
             <PropertyRef Name="Id" />
@@ -217,7 +217,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TOLL_LocalDBModelStoreContainer">
+        <EntityContainer Name="TollAppDBModelStoreContainer">
           <EntitySet Name="PaymentHistory" EntityType="Self.PaymentHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Routes" EntityType="Self.Routes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Toll" EntityType="Self.Toll" Schema="dbo" store:Type="Tables" />
@@ -274,67 +274,11 @@
             <End Role="UserVehicle" EntitySet="UserVehicle" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="TOLL_LocalDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="TOLL_LocalDBEntities2" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="PaymentHistories" EntityType="TOLL_LocalDBModel.PaymentHistory" />
-          <EntitySet Name="Routes" EntityType="TOLL_LocalDBModel.Route" />
-          <EntitySet Name="Tolls" EntityType="TOLL_LocalDBModel.Toll" />
-          <EntitySet Name="TollPlazas" EntityType="TOLL_LocalDBModel.TollPlaza" />
-          <EntitySet Name="Users" EntityType="TOLL_LocalDBModel.User" />
-          <EntitySet Name="UserVehicles" EntityType="TOLL_LocalDBModel.UserVehicle" />
-          <EntitySet Name="Vehicles" EntityType="TOLL_LocalDBModel.Vehicle" />
-          <AssociationSet Name="FK_PAYMENTHISTORY_EXITLOCID" Association="TOLL_LocalDBModel.FK_PAYMENTHISTORY_EXITLOCID">
-            <End Role="TollPlaza" EntitySet="TollPlazas" />
-            <End Role="PaymentHistory" EntitySet="PaymentHistories" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PAYMENTHISTORY_RouteId" Association="TOLL_LocalDBModel.FK_PAYMENTHISTORY_RouteId">
-            <End Role="Route" EntitySet="Routes" />
-            <End Role="PaymentHistory" EntitySet="PaymentHistories" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PAYMENTHISTORY_USERID" Association="TOLL_LocalDBModel.FK_PAYMENTHISTORY_USERID">
-            <End Role="User" EntitySet="Users" />
-            <End Role="PaymentHistory" EntitySet="PaymentHistories" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PAYMENTHISTORY_VEHCILETYPEID" Association="TOLL_LocalDBModel.FK_PAYMENTHISTORY_VEHCILETYPEID">
-            <End Role="Vehicle" EntitySet="Vehicles" />
-            <End Role="PaymentHistory" EntitySet="PaymentHistories" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TollPlaza_RouteId" Association="TOLL_LocalDBModel.FK_TollPlaza_RouteId">
-            <End Role="Route" EntitySet="Routes" />
-            <End Role="TollPlaza" EntitySet="TollPlazas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_Route_Id" Association="TOLL_LocalDBModel.FK_User_Route_Id">
-            <End Role="Route" EntitySet="Routes" />
-            <End Role="User" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Toll_FROMLOCID" Association="TOLL_LocalDBModel.FK_Toll_FROMLOCID">
-            <End Role="TollPlaza" EntitySet="TollPlazas" />
-            <End Role="Toll" EntitySet="Tolls" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Toll_TOLOCID" Association="TOLL_LocalDBModel.FK_Toll_TOLOCID">
-            <End Role="TollPlaza" EntitySet="TollPlazas" />
-            <End Role="Toll" EntitySet="Tolls" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Toll_VEHICLE_TYPE_ID" Association="TOLL_LocalDBModel.FK_Toll_VEHICLE_TYPE_ID">
-            <End Role="Vehicle" EntitySet="Vehicles" />
-            <End Role="Toll" EntitySet="Tolls" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_Toll_Id" Association="TOLL_LocalDBModel.FK_User_Toll_Id">
-            <End Role="Toll" EntitySet="Tolls" />
-            <End Role="User" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserVehicle_UserId" Association="TOLL_LocalDBModel.FK_UserVehicle_UserId">
-            <End Role="User" EntitySet="Users" />
-            <End Role="UserVehicle" EntitySet="UserVehicles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserVehicle_VehicleTypeId" Association="TOLL_LocalDBModel.FK_UserVehicle_VehicleTypeId">
-            <End Role="Vehicle" EntitySet="Vehicles" />
-            <End Role="UserVehicle" EntitySet="UserVehicles" />
-          </AssociationSet>
-        </EntityContainer>
+      <Schema Namespace="TollAppDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="PaymentHistory">
           <Key>
             <PropertyRef Name="Id" />
@@ -348,10 +292,10 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="TranscationId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Amount" Type="Decimal" Precision="10" Scale="2" />
-          <NavigationProperty Name="TollPlaza" Relationship="TOLL_LocalDBModel.FK_PAYMENTHISTORY_EXITLOCID" FromRole="PaymentHistory" ToRole="TollPlaza" />
-          <NavigationProperty Name="Route" Relationship="TOLL_LocalDBModel.FK_PAYMENTHISTORY_RouteId" FromRole="PaymentHistory" ToRole="Route" />
-          <NavigationProperty Name="User" Relationship="TOLL_LocalDBModel.FK_PAYMENTHISTORY_USERID" FromRole="PaymentHistory" ToRole="User" />
-          <NavigationProperty Name="Vehicle" Relationship="TOLL_LocalDBModel.FK_PAYMENTHISTORY_VEHCILETYPEID" FromRole="PaymentHistory" ToRole="Vehicle" />
+          <NavigationProperty Name="TollPlaza" Relationship="Self.FK_PAYMENTHISTORY_EXITLOCID" FromRole="PaymentHistory" ToRole="TollPlaza" />
+          <NavigationProperty Name="Route" Relationship="Self.FK_PAYMENTHISTORY_RouteId" FromRole="PaymentHistory" ToRole="Routes" />
+          <NavigationProperty Name="User" Relationship="Self.FK_PAYMENTHISTORY_USERID" FromRole="PaymentHistory" ToRole="User" />
+          <NavigationProperty Name="Vehicle" Relationship="Self.FK_PAYMENTHISTORY_VEHCILETYPEID" FromRole="PaymentHistory" ToRole="Vehicles" />
         </EntityType>
         <EntityType Name="Route">
           <Key>
@@ -360,9 +304,9 @@
           <Property Name="RouteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="From" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="To" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="PaymentHistories" Relationship="TOLL_LocalDBModel.FK_PAYMENTHISTORY_RouteId" FromRole="Route" ToRole="PaymentHistory" />
-          <NavigationProperty Name="TollPlazas" Relationship="TOLL_LocalDBModel.FK_TollPlaza_RouteId" FromRole="Route" ToRole="TollPlaza" />
-          <NavigationProperty Name="Users" Relationship="TOLL_LocalDBModel.FK_User_Route_Id" FromRole="Route" ToRole="User" />
+          <NavigationProperty Name="PaymentHistories" Relationship="Self.FK_PAYMENTHISTORY_RouteId" FromRole="Routes" ToRole="PaymentHistory" />
+          <NavigationProperty Name="TollPlazas" Relationship="Self.FK_TollPlaza_RouteId" FromRole="Routes" ToRole="TollPlaza" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_User_Route_Id" FromRole="Routes" ToRole="User" />
         </EntityType>
         <EntityType Name="Toll">
           <Key>
@@ -372,11 +316,11 @@
           <Property Name="FromLocationId" Type="Int32" Nullable="false" />
           <Property Name="ToLocationId" Type="Int32" Nullable="false" />
           <Property Name="VehicleTypeId" Type="Int32" Nullable="false" />
-          <Property Name="Cost" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
-          <NavigationProperty Name="TollPlaza" Relationship="TOLL_LocalDBModel.FK_Toll_FROMLOCID" FromRole="Toll" ToRole="TollPlaza" />
-          <NavigationProperty Name="TollPlaza1" Relationship="TOLL_LocalDBModel.FK_Toll_TOLOCID" FromRole="Toll" ToRole="TollPlaza" />
-          <NavigationProperty Name="Vehicle" Relationship="TOLL_LocalDBModel.FK_Toll_VEHICLE_TYPE_ID" FromRole="Toll" ToRole="Vehicle" />
-          <NavigationProperty Name="Users" Relationship="TOLL_LocalDBModel.FK_User_Toll_Id" FromRole="Toll" ToRole="User" />
+          <Property Name="Cost" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="TollPlaza" Relationship="Self.FK_Toll_FROMLOCID" FromRole="Toll" ToRole="TollPlaza" />
+          <NavigationProperty Name="TollPlaza1" Relationship="Self.FK_Toll_TOLOCID" FromRole="Toll" ToRole="TollPlaza" />
+          <NavigationProperty Name="Vehicle" Relationship="Self.FK_Toll_VEHICLE_TYPE_ID" FromRole="Toll" ToRole="Vehicles" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_User_Toll_Id" FromRole="Toll" ToRole="User" />
         </EntityType>
         <EntityType Name="TollPlaza">
           <Key>
@@ -385,10 +329,10 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="RouteId" Type="Int32" />
-          <NavigationProperty Name="PaymentHistories" Relationship="TOLL_LocalDBModel.FK_PAYMENTHISTORY_EXITLOCID" FromRole="TollPlaza" ToRole="PaymentHistory" />
-          <NavigationProperty Name="Route" Relationship="TOLL_LocalDBModel.FK_TollPlaza_RouteId" FromRole="TollPlaza" ToRole="Route" />
-          <NavigationProperty Name="Tolls" Relationship="TOLL_LocalDBModel.FK_Toll_FROMLOCID" FromRole="TollPlaza" ToRole="Toll" />
-          <NavigationProperty Name="Tolls1" Relationship="TOLL_LocalDBModel.FK_Toll_TOLOCID" FromRole="TollPlaza" ToRole="Toll" />
+          <NavigationProperty Name="PaymentHistories" Relationship="Self.FK_PAYMENTHISTORY_EXITLOCID" FromRole="TollPlaza" ToRole="PaymentHistory" />
+          <NavigationProperty Name="Route" Relationship="Self.FK_TollPlaza_RouteId" FromRole="TollPlaza" ToRole="Routes" />
+          <NavigationProperty Name="Tolls" Relationship="Self.FK_Toll_FROMLOCID" FromRole="TollPlaza" ToRole="Toll" />
+          <NavigationProperty Name="Tolls1" Relationship="Self.FK_Toll_TOLOCID" FromRole="TollPlaza" ToRole="Toll" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -400,10 +344,10 @@
           <Property Name="TollId" Type="Int32" />
           <Property Name="RouteId" Type="Int32" />
           <Property Name="Balance_Amount" Type="Decimal" Precision="10" Scale="2" />
-          <NavigationProperty Name="PaymentHistories" Relationship="TOLL_LocalDBModel.FK_PAYMENTHISTORY_USERID" FromRole="User" ToRole="PaymentHistory" />
-          <NavigationProperty Name="Route" Relationship="TOLL_LocalDBModel.FK_User_Route_Id" FromRole="User" ToRole="Route" />
-          <NavigationProperty Name="Toll" Relationship="TOLL_LocalDBModel.FK_User_Toll_Id" FromRole="User" ToRole="Toll" />
-          <NavigationProperty Name="UserVehicles" Relationship="TOLL_LocalDBModel.FK_UserVehicle_UserId" FromRole="User" ToRole="UserVehicle" />
+          <NavigationProperty Name="PaymentHistories" Relationship="Self.FK_PAYMENTHISTORY_USERID" FromRole="User" ToRole="PaymentHistory" />
+          <NavigationProperty Name="Route" Relationship="Self.FK_User_Route_Id" FromRole="User" ToRole="Routes" />
+          <NavigationProperty Name="Toll" Relationship="Self.FK_User_Toll_Id" FromRole="User" ToRole="Toll" />
+          <NavigationProperty Name="UserVehicles" Relationship="Self.FK_UserVehicle_UserId" FromRole="User" ToRole="UserVehicle" />
         </EntityType>
         <EntityType Name="UserVehicle">
           <Key>
@@ -413,8 +357,8 @@
           <Property Name="UserId" Type="Int32" />
           <Property Name="VehicleTypeId" Type="Int32" />
           <Property Name="VehicleNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="User" Relationship="TOLL_LocalDBModel.FK_UserVehicle_UserId" FromRole="UserVehicle" ToRole="User" />
-          <NavigationProperty Name="Vehicle" Relationship="TOLL_LocalDBModel.FK_UserVehicle_VehicleTypeId" FromRole="UserVehicle" ToRole="Vehicle" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserVehicle_UserId" FromRole="UserVehicle" ToRole="User" />
+          <NavigationProperty Name="Vehicle" Relationship="Self.FK_UserVehicle_VehicleTypeId" FromRole="UserVehicle" ToRole="Vehicles" />
         </EntityType>
         <EntityType Name="Vehicle">
           <Key>
@@ -423,13 +367,13 @@
           <Property Name="VehicleTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="VehicleType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="VehicleImg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="PaymentHistories" Relationship="TOLL_LocalDBModel.FK_PAYMENTHISTORY_VEHCILETYPEID" FromRole="Vehicle" ToRole="PaymentHistory" />
-          <NavigationProperty Name="Tolls" Relationship="TOLL_LocalDBModel.FK_Toll_VEHICLE_TYPE_ID" FromRole="Vehicle" ToRole="Toll" />
-          <NavigationProperty Name="UserVehicles" Relationship="TOLL_LocalDBModel.FK_UserVehicle_VehicleTypeId" FromRole="Vehicle" ToRole="UserVehicle" />
+          <NavigationProperty Name="PaymentHistories" Relationship="Self.FK_PAYMENTHISTORY_VEHCILETYPEID" FromRole="Vehicles" ToRole="PaymentHistory" />
+          <NavigationProperty Name="Tolls" Relationship="Self.FK_Toll_VEHICLE_TYPE_ID" FromRole="Vehicles" ToRole="Toll" />
+          <NavigationProperty Name="UserVehicles" Relationship="Self.FK_UserVehicle_VehicleTypeId" FromRole="Vehicles" ToRole="UserVehicle" />
         </EntityType>
         <Association Name="FK_PAYMENTHISTORY_EXITLOCID">
-          <End Type="TOLL_LocalDBModel.TollPlaza" Role="TollPlaza" Multiplicity="0..1" />
-          <End Type="TOLL_LocalDBModel.PaymentHistory" Role="PaymentHistory" Multiplicity="*" />
+          <End Role="TollPlaza" Type="Self.TollPlaza" Multiplicity="0..1" />
+          <End Role="PaymentHistory" Type="Self.PaymentHistory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TollPlaza">
               <PropertyRef Name="Id" />
@@ -440,10 +384,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PAYMENTHISTORY_RouteId">
-          <End Type="TOLL_LocalDBModel.Route" Role="Route" Multiplicity="0..1" />
-          <End Type="TOLL_LocalDBModel.PaymentHistory" Role="PaymentHistory" Multiplicity="*" />
+          <End Role="Routes" Type="Self.Route" Multiplicity="0..1" />
+          <End Role="PaymentHistory" Type="Self.PaymentHistory" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Route">
+            <Principal Role="Routes">
               <PropertyRef Name="RouteId" />
             </Principal>
             <Dependent Role="PaymentHistory">
@@ -452,8 +396,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PAYMENTHISTORY_USERID">
-          <End Type="TOLL_LocalDBModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="TOLL_LocalDBModel.PaymentHistory" Role="PaymentHistory" Multiplicity="*" />
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="PaymentHistory" Type="Self.PaymentHistory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="Id" />
@@ -464,10 +408,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PAYMENTHISTORY_VEHCILETYPEID">
-          <End Type="TOLL_LocalDBModel.Vehicle" Role="Vehicle" Multiplicity="0..1" />
-          <End Type="TOLL_LocalDBModel.PaymentHistory" Role="PaymentHistory" Multiplicity="*" />
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="0..1" />
+          <End Role="PaymentHistory" Type="Self.PaymentHistory" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Vehicle">
+            <Principal Role="Vehicles">
               <PropertyRef Name="VehicleTypeId" />
             </Principal>
             <Dependent Role="PaymentHistory">
@@ -476,10 +420,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TollPlaza_RouteId">
-          <End Type="TOLL_LocalDBModel.Route" Role="Route" Multiplicity="0..1" />
-          <End Type="TOLL_LocalDBModel.TollPlaza" Role="TollPlaza" Multiplicity="*" />
+          <End Role="Routes" Type="Self.Route" Multiplicity="0..1" />
+          <End Role="TollPlaza" Type="Self.TollPlaza" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Route">
+            <Principal Role="Routes">
               <PropertyRef Name="RouteId" />
             </Principal>
             <Dependent Role="TollPlaza">
@@ -488,10 +432,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_User_Route_Id">
-          <End Type="TOLL_LocalDBModel.Route" Role="Route" Multiplicity="0..1" />
-          <End Type="TOLL_LocalDBModel.User" Role="User" Multiplicity="*" />
+          <End Role="Routes" Type="Self.Route" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Route">
+            <Principal Role="Routes">
               <PropertyRef Name="RouteId" />
             </Principal>
             <Dependent Role="User">
@@ -500,8 +444,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Toll_FROMLOCID">
-          <End Type="TOLL_LocalDBModel.TollPlaza" Role="TollPlaza" Multiplicity="1" />
-          <End Type="TOLL_LocalDBModel.Toll" Role="Toll" Multiplicity="*" />
+          <End Role="TollPlaza" Type="Self.TollPlaza" Multiplicity="1" />
+          <End Role="Toll" Type="Self.Toll" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TollPlaza">
               <PropertyRef Name="Id" />
@@ -512,8 +456,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Toll_TOLOCID">
-          <End Type="TOLL_LocalDBModel.TollPlaza" Role="TollPlaza" Multiplicity="1" />
-          <End Type="TOLL_LocalDBModel.Toll" Role="Toll" Multiplicity="*" />
+          <End Role="TollPlaza" Type="Self.TollPlaza" Multiplicity="1" />
+          <End Role="Toll" Type="Self.Toll" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TollPlaza">
               <PropertyRef Name="Id" />
@@ -524,10 +468,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Toll_VEHICLE_TYPE_ID">
-          <End Type="TOLL_LocalDBModel.Vehicle" Role="Vehicle" Multiplicity="1" />
-          <End Type="TOLL_LocalDBModel.Toll" Role="Toll" Multiplicity="*" />
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="1" />
+          <End Role="Toll" Type="Self.Toll" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Vehicle">
+            <Principal Role="Vehicles">
               <PropertyRef Name="VehicleTypeId" />
             </Principal>
             <Dependent Role="Toll">
@@ -536,8 +480,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_User_Toll_Id">
-          <End Type="TOLL_LocalDBModel.Toll" Role="Toll" Multiplicity="0..1" />
-          <End Type="TOLL_LocalDBModel.User" Role="User" Multiplicity="*" />
+          <End Role="Toll" Type="Self.Toll" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Toll">
               <PropertyRef Name="Id" />
@@ -548,8 +492,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserVehicle_UserId">
-          <End Type="TOLL_LocalDBModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="TOLL_LocalDBModel.UserVehicle" Role="UserVehicle" Multiplicity="*" />
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserVehicle" Type="Self.UserVehicle" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="Id" />
@@ -560,10 +504,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserVehicle_VehicleTypeId">
-          <End Type="TOLL_LocalDBModel.Vehicle" Role="Vehicle" Multiplicity="0..1" />
-          <End Type="TOLL_LocalDBModel.UserVehicle" Role="UserVehicle" Multiplicity="*" />
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="0..1" />
+          <End Role="UserVehicle" Type="Self.UserVehicle" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Vehicle">
+            <Principal Role="Vehicles">
               <PropertyRef Name="VehicleTypeId" />
             </Principal>
             <Dependent Role="UserVehicle">
@@ -571,84 +515,141 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        </Schema>
+        <EntityContainer Name="TollAppDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PaymentHistories" EntityType="Self.PaymentHistory" />
+          <EntitySet Name="Routes" EntityType="Self.Route" />
+          <EntitySet Name="Tolls" EntityType="Self.Toll" />
+          <EntitySet Name="TollPlazas" EntityType="Self.TollPlaza" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserVehicles" EntityType="Self.UserVehicle" />
+          <EntitySet Name="Vehicles" EntityType="Self.Vehicle" />
+          <AssociationSet Name="FK_PAYMENTHISTORY_EXITLOCID" Association="Self.FK_PAYMENTHISTORY_EXITLOCID">
+            <End Role="TollPlaza" EntitySet="TollPlazas" />
+            <End Role="PaymentHistory" EntitySet="PaymentHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PAYMENTHISTORY_RouteId" Association="Self.FK_PAYMENTHISTORY_RouteId">
+            <End Role="Routes" EntitySet="Routes" />
+            <End Role="PaymentHistory" EntitySet="PaymentHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PAYMENTHISTORY_USERID" Association="Self.FK_PAYMENTHISTORY_USERID">
+            <End Role="User" EntitySet="Users" />
+            <End Role="PaymentHistory" EntitySet="PaymentHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PAYMENTHISTORY_VEHCILETYPEID" Association="Self.FK_PAYMENTHISTORY_VEHCILETYPEID">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="PaymentHistory" EntitySet="PaymentHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TollPlaza_RouteId" Association="Self.FK_TollPlaza_RouteId">
+            <End Role="Routes" EntitySet="Routes" />
+            <End Role="TollPlaza" EntitySet="TollPlazas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Route_Id" Association="Self.FK_User_Route_Id">
+            <End Role="Routes" EntitySet="Routes" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Toll_FROMLOCID" Association="Self.FK_Toll_FROMLOCID">
+            <End Role="TollPlaza" EntitySet="TollPlazas" />
+            <End Role="Toll" EntitySet="Tolls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Toll_TOLOCID" Association="Self.FK_Toll_TOLOCID">
+            <End Role="TollPlaza" EntitySet="TollPlazas" />
+            <End Role="Toll" EntitySet="Tolls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Toll_VEHICLE_TYPE_ID" Association="Self.FK_Toll_VEHICLE_TYPE_ID">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="Toll" EntitySet="Tolls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Toll_Id" Association="Self.FK_User_Toll_Id">
+            <End Role="Toll" EntitySet="Tolls" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserVehicle_UserId" Association="Self.FK_UserVehicle_UserId">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserVehicle" EntitySet="UserVehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserVehicle_VehicleTypeId" Association="Self.FK_UserVehicle_VehicleTypeId">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="UserVehicle" EntitySet="UserVehicles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TOLL_LocalDBModelStoreContainer" CdmEntityContainer="TOLL_LocalDBEntities2">
+        <EntityContainerMapping StorageEntityContainer="TollAppDBModelStoreContainer" CdmEntityContainer="TollAppDBEntities">
           <EntitySetMapping Name="PaymentHistories">
-            <EntityTypeMapping TypeName="TOLL_LocalDBModel.PaymentHistory">
+            <EntityTypeMapping TypeName="TollAppDBModel.PaymentHistory">
               <MappingFragment StoreEntitySet="PaymentHistory">
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="TranscationId" ColumnName="TranscationId" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="RouteId" ColumnName="RouteId" />
-                <ScalarProperty Name="VehicleNumber" ColumnName="VehicleNumber" />
-                <ScalarProperty Name="VehicleTypeId" ColumnName="VehicleTypeId" />
-                <ScalarProperty Name="ExitLocId" ColumnName="ExitLocId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ExitLocId" ColumnName="ExitLocId" />
+                <ScalarProperty Name="VehicleTypeId" ColumnName="VehicleTypeId" />
+                <ScalarProperty Name="VehicleNumber" ColumnName="VehicleNumber" />
+                <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="TranscationId" ColumnName="TranscationId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Routes">
-            <EntityTypeMapping TypeName="TOLL_LocalDBModel.Route">
+            <EntityTypeMapping TypeName="TollAppDBModel.Route">
               <MappingFragment StoreEntitySet="Routes">
-                <ScalarProperty Name="To" ColumnName="To" />
-                <ScalarProperty Name="From" ColumnName="From" />
                 <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+                <ScalarProperty Name="From" ColumnName="From" />
+                <ScalarProperty Name="To" ColumnName="To" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tolls">
-            <EntityTypeMapping TypeName="TOLL_LocalDBModel.Toll">
+            <EntityTypeMapping TypeName="TollAppDBModel.Toll">
               <MappingFragment StoreEntitySet="Toll">
-                <ScalarProperty Name="Cost" ColumnName="Cost" />
-                <ScalarProperty Name="VehicleTypeId" ColumnName="VehicleTypeId" />
-                <ScalarProperty Name="ToLocationId" ColumnName="ToLocationId" />
-                <ScalarProperty Name="FromLocationId" ColumnName="FromLocationId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FromLocationId" ColumnName="FromLocationId" />
+                <ScalarProperty Name="ToLocationId" ColumnName="ToLocationId" />
+                <ScalarProperty Name="VehicleTypeId" ColumnName="VehicleTypeId" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TollPlazas">
-            <EntityTypeMapping TypeName="TOLL_LocalDBModel.TollPlaza">
+            <EntityTypeMapping TypeName="TollAppDBModel.TollPlaza">
               <MappingFragment StoreEntitySet="TollPlaza">
-                <ScalarProperty Name="RouteId" ColumnName="RouteId" />
-                <ScalarProperty Name="Location" ColumnName="Location" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="RouteId" ColumnName="RouteId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="TOLL_LocalDBModel.User">
+            <EntityTypeMapping TypeName="TollAppDBModel.User">
               <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="Balance_Amount" ColumnName="Balance_Amount" />
-                <ScalarProperty Name="RouteId" ColumnName="RouteId" />
-                <ScalarProperty Name="TollId" ColumnName="TollId" />
-                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="TollId" ColumnName="TollId" />
+                <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+                <ScalarProperty Name="Balance_Amount" ColumnName="Balance_Amount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserVehicles">
-            <EntityTypeMapping TypeName="TOLL_LocalDBModel.UserVehicle">
+            <EntityTypeMapping TypeName="TollAppDBModel.UserVehicle">
               <MappingFragment StoreEntitySet="UserVehicle">
-                <ScalarProperty Name="VehicleNumber" ColumnName="VehicleNumber" />
-                <ScalarProperty Name="VehicleTypeId" ColumnName="VehicleTypeId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="VehicleTypeId" ColumnName="VehicleTypeId" />
+                <ScalarProperty Name="VehicleNumber" ColumnName="VehicleNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Vehicles">
-            <EntityTypeMapping TypeName="TOLL_LocalDBModel.Vehicle">
+            <EntityTypeMapping TypeName="TollAppDBModel.Vehicle">
               <MappingFragment StoreEntitySet="Vehicles">
-                <ScalarProperty Name="VehicleImg" ColumnName="VehicleImg" />
-                <ScalarProperty Name="VehicleType" ColumnName="VehicleType" />
                 <ScalarProperty Name="VehicleTypeId" ColumnName="VehicleTypeId" />
+                <ScalarProperty Name="VehicleType" ColumnName="VehicleType" />
+                <ScalarProperty Name="VehicleImg" ColumnName="VehicleImg" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

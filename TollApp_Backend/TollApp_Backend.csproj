@@ -179,40 +179,40 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\PaymentHistory.cs">
-      <DependentUpon>TollAppDB.tt</DependentUpon>
+      <DependentUpon>TollBackendDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Route.cs">
-      <DependentUpon>TollAppDB.tt</DependentUpon>
+      <DependentUpon>TollBackendDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Toll.cs">
-      <DependentUpon>TollAppDB.tt</DependentUpon>
+      <DependentUpon>TollBackendDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TollAppDB.Context.cs">
+    <Compile Include="Models\TollBackendDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TollAppDB.Context.tt</DependentUpon>
+      <DependentUpon>TollBackendDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TollAppDB.cs">
+    <Compile Include="Models\TollBackendDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TollAppDB.tt</DependentUpon>
+      <DependentUpon>TollBackendDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TollAppDB.Designer.cs">
+    <Compile Include="Models\TollBackendDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TollAppDB.edmx</DependentUpon>
+      <DependentUpon>TollBackendDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\TollPlaza.cs">
-      <DependentUpon>TollAppDB.tt</DependentUpon>
+      <DependentUpon>TollBackendDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
-      <DependentUpon>TollAppDB.tt</DependentUpon>
+      <DependentUpon>TollBackendDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserVehicle.cs">
-      <DependentUpon>TollAppDB.tt</DependentUpon>
+      <DependentUpon>TollBackendDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Vehicle.cs">
-      <DependentUpon>TollAppDB.tt</DependentUpon>
+      <DependentUpon>TollBackendDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -225,15 +225,15 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\TollAppDB.Context.tt">
+    <Content Include="Models\TollBackendDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TollAppDB.edmx</DependentUpon>
-      <LastGenOutput>TollAppDB.Context.cs</LastGenOutput>
+      <DependentUpon>TollBackendDB.edmx</DependentUpon>
+      <LastGenOutput>TollBackendDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\TollAppDB.tt">
+    <Content Include="Models\TollBackendDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TollAppDB.edmx</DependentUpon>
-      <LastGenOutput>TollAppDB.cs</LastGenOutput>
+      <DependentUpon>TollBackendDB.edmx</DependentUpon>
+      <LastGenOutput>TollBackendDB.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -256,12 +256,12 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <EntityDeploy Include="Models\TollAppDB.edmx">
+    <EntityDeploy Include="Models\TollBackendDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TollAppDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>TollBackendDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\TollAppDB.edmx.diagram">
-      <DependentUpon>TollAppDB.edmx</DependentUpon>
+    <Content Include="Models\TollBackendDB.edmx.diagram">
+      <DependentUpon>TollBackendDB.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

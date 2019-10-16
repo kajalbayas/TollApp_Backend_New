@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -10,12 +6,11 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using TollApp_Backend.Models;
 
-
 namespace TollApp_Backend.Controllers
 {
     public class UsersController : ApiController
     {
-        private TOLL_LocalDBEntities2 db = new TOLL_LocalDBEntities2();
+        private TollAppDBEntities db = new TollAppDBEntities();
 
         // GET: api/Users/5
         [ResponseType(typeof(User))]
@@ -30,15 +25,20 @@ namespace TollApp_Backend.Controllers
                    uv.VehicleNumber
                 }),
 
-                TollCost = (from t in db.Tolls join tp in db.TollPlazas 
-                            on t.ToLocationId  equals tp.Id join v in db.Vehicles
+                TollCost = (from t in db.Tolls
+                            join tp in db.TollPlazas
+                            on t.ToLocationId equals tp.Id
+                            join v in db.Vehicles
                             on t.VehicleTypeId equals v.VehicleTypeId
-                            where t.ToLocationId == locId && t.VehicleTypeId==vehicleId
-                            select new { t.Cost, t.Id })
-
-                         });
+                            where t.ToLocationId == locId && t.VehicleTypeId == vehicleId
+                            select new
+                            {
+                                t.Cost,
+                                t.Id
+                            })
+                        });
                 return getVehicles;
-           }
+        }
 
 
         // POST: api/Users
