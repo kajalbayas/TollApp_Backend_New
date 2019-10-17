@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -42,27 +37,14 @@ namespace TollApp_Backend.Controllers
 
                 Cost = t.Cost
 
-            }); 
-            return query;
+            });
+             return query;
         }
     }
 }
 
 
 
-//// POST: api/Tolls
-//[ResponseType(typeof(Toll))]
-//public IHttpActionResult PostToll(Toll toll)
-//{
-//    if (!ModelState.IsValid)
-//    {
-//        return BadRequest(ModelState);
-//    }
 
-//    db.Tolls.Add(toll);
-//    db.SaveChanges();
-
-//    return CreatedAtRoute("DefaultApi", new { id = toll.Id }, toll);
-//}
 
 

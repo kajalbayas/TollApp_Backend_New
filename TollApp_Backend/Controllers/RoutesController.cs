@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -17,27 +12,17 @@ namespace TollApp_Backend.Controllers
         private TollAppDBEntities db = new TollAppDBEntities();
 
         // GET: api/Routes/5
-        //[ResponseType(typeof(Route))]
         public IQueryable GetRoute(int id)
         {
             var Routes = db.Routes.Where(r => r.RouteId == id).Select(c => new
             {
-               
                     c.From,
                     c.To,
                     c.RouteId,
-                    exitLocation = db.TollPlazas.Where(x => x.RouteId == c.RouteId).Select(x => new {
-                        x.Location,
-                        x.Id
-                    })
-              
-
-        });
-
+            });
             return Routes;
-
         }
-     }
+    }
 }
 
 
