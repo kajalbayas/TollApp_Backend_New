@@ -61,16 +61,15 @@ namespace TollApp_Backend.Controllers
                 {
                     transaction.Rollback();
                 }
-
-                return Request.CreateResponse(HttpStatusCode.OK, new
-                {
-                    paymentHistory.Amount,
-                    paymentHistory.CreatedDate,
-                    paymentHistory.TranscationId,
-                    Routes = db.Routes.Where(r => r.RouteId == paymentHistory.RouteId).Select(r => new { r.From, r.To }),
-                    exitlocation = db.TollPlazas.Where(tp => tp.Id == paymentHistory.ExitLocId).Select(tp => tp.Location)
-                });
             }
+            return Request.CreateResponse(HttpStatusCode.OK, new
+            {
+                paymentHistory.Amount,
+                paymentHistory.CreatedDate,
+                paymentHistory.TranscationId,
+                Routes = db.Routes.Where(r => r.RouteId == paymentHistory.RouteId).Select(r => new { r.From, r.To }),
+                exitlocation = db.TollPlazas.Where(tp => tp.Id == paymentHistory.ExitLocId).Select(tp => tp.Location)
+            });
         }
     }
 }
