@@ -32,13 +32,14 @@ namespace TollApp_Backend.Controllers
         // GET: api/TollPlazas/5
         public IQueryable GetTollPlaza(int id)
         {
-            var ExitLocation = db.TollPlazas.Where(e => e.RouteId == id).Select(l => new {
+            var ExitLocation = db.TollPlazas.Where(e => e.RouteId == id).Select(l => new
+            {
                 l.Id,
                 l.Location,
                 l.RouteId
             });
             return ExitLocation;
-   
+
         }
 
     }

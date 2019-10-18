@@ -23,10 +23,8 @@ namespace TollApp_Backend.Controllers
                 v.VehicleTypeId,
                 v.VehicleType,
                 v.VehicleImg
-                
             });
             return GetVehicleList;
         }
-     
     }
 }

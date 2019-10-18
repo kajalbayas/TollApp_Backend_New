@@ -16,9 +16,9 @@ namespace TollApp_Backend.Controllers
         {
             var Routes = db.Routes.Where(r => r.RouteId == id).Select(c => new
             {
-                    c.From,
-                    c.To,
-                    c.RouteId,
+                c.From,
+                c.To,
+                c.RouteId,
             });
             return Routes;
         }

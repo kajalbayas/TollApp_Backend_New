@@ -22,23 +22,19 @@ namespace TollApp_Backend.Controllers
                     tp.Id,
                     tp.Location
                 }),
-
                 ExitLocation = db.TollPlazas.Where(tp => tp.Id == t.ToLocationId).Select(tp => new
                 {
                     tp.Id,
                     tp.Location
                 }),
-
                 VehicleType = db.Vehicles.Where(v => v.VehicleTypeId == t.VehicleTypeId).Select(v => new
                 {
                     v.VehicleTypeId,
                     v.VehicleType
                 }),
-
                 Cost = t.Cost
-
             });
-             return query;
+         return query;
         }
     }
 }

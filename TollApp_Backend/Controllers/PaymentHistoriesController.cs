@@ -32,64 +32,49 @@ namespace TollApp_Backend.Controllers
                 })
 
             });
+
             return query;
         }
 
 
         // POST: api/PaymentHistories
-        [ResponseType(typeof(PaymentHistory))]
         public HttpResponseMessage PostPaymentHistory(PaymentHistory paymentHistory)
         {
-            try
+            using (System.Data.Entity.DbContextTransaction transaction = db.Database.BeginTransaction())
             {
-                if(paymentHistory.UserId == null)
+                try
                 {
-                    return Request.CreateErrorResponse(HttpStatusCode.Conflict, "User Id is required");
-                }
-
-                if (paymentHistory.VehicleTypeId == null)
-                {
-                    return Request.CreateErrorResponse(HttpStatusCode.Conflict, "Vehicle Type Id is required");
-                }
-
-                if (paymentHistory.VehicleNumber == null)
-                {
-                    return Request.CreateErrorResponse(HttpStatusCode.Conflict, "VehicleNumber is required");
-                }
-
-                else
-                {
-                    
-                   //https://www.codeproject.com/Articles/14403/Generating-Unique-Keys-in-Net
+                    //https://www.codeproject.com/Articles/14403/Generating-Unique-Keys-in-Net
                     paymentHistory.TranscationId = DateTime.Now.ToString().GetHashCode().ToString("x");
-                    DateTime now = DateTime.Now;
-                    paymentHistory.CreatedDate = now;
+                    paymentHistory.CreatedDate = DateTime.Now;
                     db.PaymentHistories.Add(paymentHistory);
+                    db.SaveChanges();
 
-                    // update user balance_amount 
+
                     var userdetails = db.Users.Where(u => u.Id == paymentHistory.UserId).FirstOrDefault();
                     userdetails.Balance_Amount = userdetails.Balance_Amount - paymentHistory.Amount;
                     db.Entry(userdetails).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
-
-                    return Request.CreateResponse(HttpStatusCode.OK, new
-                    {
-                      paymentHistory.Amount,
-                      paymentHistory.CreatedDate,
-                      paymentHistory.TranscationId,
-                      Routes = db.Routes.Where(r => r.RouteId == paymentHistory.RouteId).Select(r => new { r.From, r.To }),
-                      exitlocation = db.TollPlazas.Where(tp => tp.Id == paymentHistory.ExitLocId).Select(tp => new { tp.Location })
-                    });
+                    transaction.Commit();
                 }
-            }
-            catch(Exception e)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.Conflict, e);
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, new
+                {
+                    paymentHistory.Amount,
+                    paymentHistory.CreatedDate,
+                    paymentHistory.TranscationId,
+                    Routes = db.Routes.Where(r => r.RouteId == paymentHistory.RouteId).Select(r => new { r.From, r.To }),
+                    exitlocation = db.TollPlazas.Where(tp => tp.Id == paymentHistory.ExitLocId).Select(tp => tp.Location)
+                });
             }
         }
     }
 }
-
+ 
 
 
 
